@@ -182,9 +182,12 @@ public class PlayerMovement : MonoBehaviour
             if (xInput != 0 ){
             swimming = true;
         }
-            
 
-
+        }
+        if (col.gameObject.tag == "locked")
+        {
+            //gameRestarted = true;
+            col.gameObject.GetComponent<FishTank>().FreeFish();
         }
 
     }
