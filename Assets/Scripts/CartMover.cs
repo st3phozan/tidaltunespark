@@ -8,10 +8,13 @@ public class CartMover : MonoBehaviour
 	public GameObject stopPos; // Start is called before the first frame update
 	Rigidbody2D rb;
 	public Vector2 direction = Vector2.right; 
+
+	private GameObject player, parentPlayer;
 	public float speed = 1f;
 	void Start()
 	{
 	rb = GetComponent<Rigidbody2D>();
+	parentPlayer = player.transform.parent.gameObject;
 	}
 
 	// Update is called once per frame
@@ -20,12 +23,17 @@ public class CartMover : MonoBehaviour
 		if (landedOn && !collided)
 		{
 			rb.velocity = direction*speed;
+			//player.transform.parent = transform;
+			player.transform.position = new Vector3(transform.position.x, player.transform.position.y, player.transform.position.z);
+			
 		}
 
-		if (transform.position.x == (stopPos.transform.position.x - 30))
+		if ((stopPos.transform.position.x - transform.position.x ) <= 10)
 		{
 			collided = true;
-			rb.velocity = Vector2.zero;
+			//player.transform.parent = parentPlayer.transform;
+			player = null;
+			//rb.velocity = Vector2.zero;
 		}
 	}
 
@@ -34,6 +42,7 @@ public class CartMover : MonoBehaviour
 		if (col.gameObject.tag == "Player")
 		{
 			landedOn = true;
+			player = col.gameObject;
 		}
 	}
 }

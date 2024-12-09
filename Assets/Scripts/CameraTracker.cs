@@ -6,6 +6,8 @@ public class CameraTracker : MonoBehaviour
 {
 	public GameObject Player, trackerArrow;
 	public float cameraOffset = 10, BCAngle = 5, ACAngle = 7f;
+
+	private Vector3 placement;
 	public bool above = false;
 	private float timeElapsed = 0f, speed = 1f;
 	public Camera cam;
@@ -17,7 +19,7 @@ public class CameraTracker : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		Debug.Log(timeElapsed);
+		//Debug.Log(timeElapsed);
 		transform.position = new Vector3(Player.transform.position.x + cameraOffset, transform.position.y, transform.position.z);
 		if (above)
 		{
@@ -51,6 +53,9 @@ public class CameraTracker : MonoBehaviour
 	timeElapsed = 0f;
 	above = false;
 	trackerArrow.SetActive(false);
+	}
+	public void CharacterChange(GameObject newPlayer){
+		Player = newPlayer;
 	}
 
 	void OnTriggerEnter2D(Collider2D col)

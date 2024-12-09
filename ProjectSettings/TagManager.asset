@@ -9,6 +9,12 @@ TagManager:
   - tank
   - locked
   - tutorial
+  - flickLights
+  - vase
+  - Mimi
+  - plant
+  - crack
+  - mimiTank
   layers:
   - Default
   - TransparentFX
@@ -45,4 +51,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MimiCrackMask
+    uniqueID: 618370961
     locked: 0

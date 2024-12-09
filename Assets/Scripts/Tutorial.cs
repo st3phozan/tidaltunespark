@@ -8,6 +8,8 @@ public class Tutorial : MonoBehaviour
 	public bool tutorialDone = false;
 	public PlayerMovement player;
 	public List<GameObject> tutorials = new List<GameObject>();
+
+	public GameObject tutGroup;
 	private int i = 0; 
 	// Start is called before the first frame update
 	void Start()
@@ -31,31 +33,9 @@ public class Tutorial : MonoBehaviour
 }
 else{
 tutorialDone = true;
+tutGroup.SetActive(false);
 }
     
 }
-	public void Tut2()
-	{
-		tutorialText = "Hold and release the spacebar to launch Finn from tank to tank";
-	}
-
-	public void Tut3()
-	{
-		tutorialText = "Hold down the spacebar longer for farther and higher jumps";
-	}
-
-	public void Tut4()
-	{
-		tutorialText = "Make sure to land in the tanks, landing on the table causes you to lose air";
-	}
-
-	public void Tut5()
-	{
-		tutorialText = "QUICK, get back in the water";
-	}
-
-	public void Tut6()
-	{
-		tutorialText = "Free the other fish by landing in the tank with them";
-	}
+	
 }
