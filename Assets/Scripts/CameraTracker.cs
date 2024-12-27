@@ -19,24 +19,25 @@ public class CameraTracker : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		//Debug.Log(timeElapsed);
+		//if player is above camera view, have the camera zoom out
 		transform.position = new Vector3(Player.transform.position.x + cameraOffset, transform.position.y, transform.position.z);
 		if (above)
 		{
 			timeElapsed += Time.deltaTime * speed;
-			// Lerp between startPoint and endPoint positions
+			
 			cam.orthographicSize = Mathf.Lerp(BCAngle, ACAngle, timeElapsed);
-			// Ensure the lerp value is clamped between 0 and 1
+	
 			timeElapsed = Mathf.Clamp01(timeElapsed);
 			trackerArrow.transform.position = new Vector3(Player.transform.position.x, trackerArrow.transform.position.y, trackerArrow.transform.position.z);
 			
 		}
+		// once player lands back close, zoom back in to screen
 		else if (!above)
 		{
 			timeElapsed += Time.deltaTime * speed;
-			// Lerp between startPoint and endPoint positions
+
 			cam.orthographicSize = Mathf.Lerp(ACAngle, BCAngle, timeElapsed);
-			// Ensure the lerp value is clamped between 0 and 1
+
 			timeElapsed = Mathf.Clamp01(timeElapsed);
 			
 		}
@@ -54,6 +55,8 @@ public class CameraTracker : MonoBehaviour
 	above = false;
 	trackerArrow.SetActive(false);
 	}
+
+	//changes focus on player once character is swapped
 	public void CharacterChange(GameObject newPlayer){
 		Player = newPlayer;
 	}

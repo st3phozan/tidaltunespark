@@ -6,7 +6,7 @@ public class EnvironmentManager : MonoBehaviour
 {
     public List<GameObject> masks = new List<GameObject>();
     public int pastIdx = 0;
-    public float minWaitTime = 1f;  // Minimum wait time in seconds
+    public float minWaitTime = 1f;  
     public float maxWaitTime = 5f;  // Maximum wait time in seconds
     // Start is called before the first frame update
     void Start()

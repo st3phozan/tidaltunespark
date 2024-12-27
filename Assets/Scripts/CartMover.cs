@@ -5,7 +5,7 @@ using UnityEngine;
 public class CartMover : MonoBehaviour
 {
 	public bool landedOn = false, collided = false;
-	public GameObject stopPos; // Start is called before the first frame update
+	public GameObject stopPos; 
 	Rigidbody2D rb;
 	public Vector2 direction = Vector2.right; 
 
@@ -20,6 +20,7 @@ public class CartMover : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		//player lands on cart
 		if (landedOn && !collided)
 		{
 			rb.velocity = direction*speed;
@@ -28,6 +29,7 @@ public class CartMover : MonoBehaviour
 			
 		}
 
+		//cart stops at object
 		if ((stopPos.transform.position.x - transform.position.x ) <= 10)
 		{
 			collided = true;

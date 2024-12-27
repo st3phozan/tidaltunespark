@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class EndUI : MonoBehaviour
 {
     public string sentence1, sentence2, sentence3, sentence4, sentence5, sentence6, sentence7;
+    public bool EndofGame = false;
+
+    public string NextLevel = "Level2";
     public float delayTime = 0.25f;
     public TMP_Text sentence1UI, sentence2UI, sentence3UI, sentence4UI, sentence5UI, sentence6UI, sentence7UI;
     public LevelUI levelUI;
@@ -29,13 +32,13 @@ public class EndUI : MonoBehaviour
         sentence6 = "Total Score: ";
         sentence7 = (tempEscScore+tempFishTotal).ToString();
        
-        // Start the parent coroutine to run animations sequentially
+   
         StartCoroutine(PlaySentencesSequentially());
     }
 
     IEnumerator PlaySentencesSequentially()
     {
-        // Play each sentence animation one after another
+
         yield return StartCoroutine(SentenceIter(sentence1, sentence1UI));
         yield return StartCoroutine(SentenceIter(sentence2, sentence2UI));
         yield return StartCoroutine(SentenceIter(sentence3, sentence3UI));
@@ -46,17 +49,20 @@ public class EndUI : MonoBehaviour
         
     }
     public void LevelSwitch(){
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene(NextLevel);
         ScoreVarPersistent.RestartCt = 0;
+        if (EndofGame){
+            SceneManager.LoadScene("Title");
+        }
     }
     IEnumerator SentenceIter(string sentence, TMP_Text uiSentence)
     {
-        string tempStr = ""; // Temporary string to build the sentence
+        string tempStr = ""; 
         foreach (char c in sentence)
         {
-            tempStr += c; // Add the current letter to the temp string
-            uiSentence.text = tempStr; // Update the UI text
-            yield return new WaitForSeconds(delayTime); // Wait for the delay
+            tempStr += c;
+            uiSentence.text = tempStr; 
+            yield return new WaitForSeconds(delayTime); 
         }
     }
 }

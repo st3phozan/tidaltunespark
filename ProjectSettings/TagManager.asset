@@ -55,3 +55,9 @@ TagManager:
   - name: MimiCrackMask
     uniqueID: 618370961
     locked: 0
+  - name: glowObjects
+    uniqueID: 1243249289
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 3879962247
+    locked: 0

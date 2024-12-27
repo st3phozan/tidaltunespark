@@ -25,10 +25,10 @@ public class Tutorial : MonoBehaviour
 	
 	public void TutChange()
 {
-    // Ensure 'i' is defined and the loop syntax is correct
+  
    	if (i < (tutorials.Count -1)){
-        tutorials[i].SetActive(false);    // Disable the current tutorial
-        tutorials[i + 1].SetActive(true); // Enable the next tutorial
+        tutorials[i].SetActive(false);   
+        tutorials[i + 1].SetActive(true);
 	i++;
 }
 else{

@@ -26,7 +26,7 @@ public class DrainTransport : MonoBehaviour
     }
     private IEnumerator TravelTimer(float duration)
     {
-        yield return new WaitForSeconds(duration); // Wait for the given duration
+        yield return new WaitForSeconds(duration);
         camera.transform.position = camStart;
         drainEnter = false;
         player.SetActive(true);

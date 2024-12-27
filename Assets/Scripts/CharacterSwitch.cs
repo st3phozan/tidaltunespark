@@ -34,7 +34,7 @@ public class CharacterSwitch : MonoBehaviour
     void Update()
     {
 
-        // Switch character based on key press
+        //Finn is Key 1, Mimi is Key 2
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             fishMvmt.transform.position = playerPos.transform.position;
@@ -57,10 +57,8 @@ public class CharacterSwitch : MonoBehaviour
 
     void UpdateCharacter()
     {
-        // Example code for managing character-specific behaviors
 
-        // Disable all character objects initially
-        //fishObject.SetActive(false);
+
         fishMvmt.chosen = false;
         fishObject.SetActive(false);
         octoObject.SetActive(false);
@@ -70,8 +68,8 @@ public class CharacterSwitch : MonoBehaviour
         switch (charInPlay)
         {
             case CharacterPlay.fish:
-                // Enable fish object and apply specific behavior for fish
-                //ishObject.SetActive(true);\
+   
+
                 cameraTracker.CharacterChange(movingFishObject);
                 fishMvmt.chosen = true;
                 fishMvmt.chooseCharacter();
@@ -85,24 +83,20 @@ public class CharacterSwitch : MonoBehaviour
 
             case CharacterPlay.octo:
                 cameraTracker.CharacterChange(octoObject);
-                // Enable octo object and apply specific behavior for octo
+
                 octoObject.SetActive(true);
                 Debug.Log("Switched to Octo");
                 levelUI.characterIdx = 1;
                 levelUI.ChangeBar();
-                // Example octo-specific behavior
-                // (e.g., enable ink spray ability or play tentacle animation)
-                //octoObject.GetComponent<Animator>().SetTrigger("SprayInk");
+              
                 break;
 
             case CharacterPlay.crab:
-                // Enable crab object and apply specific behavior for crab
+
                 crabObject.SetActive(true);
                 Debug.Log("Switched to Crab");
 
-                // Example crab-specific behavior
-                // (e.g., enable side-walking or pinch animation)
-                crabObject.GetComponent<Animator>().SetTrigger("PinchClaws");
+
                 break;
         }
     }
